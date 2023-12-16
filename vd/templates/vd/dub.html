@@ -1,0 +1,46 @@
+<!-- dub.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content here -->
+</head>
+<body>
+    <h1>Dubbed Video</h1>
+
+    <!-- Display the dubbed video using an HTML <video> element -->
+    <!-- dub.html -->
+
+<video width="640" height="360" controls>
+    <source src="{{ dubbed_video_path }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+    <br>
+
+    <!-- Add a form to allow users to upload another video -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.video_file.label_tag }} {{ form.video_file }}
+        
+        <!-- Language selection dropdown -->
+        <label for="target_language">Select Target Language:</label>
+        <select name="target_language" id="target_language">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="mr">marathi</option>
+            <option value="ta">tamil</option>
+            <option value="bn">bangali</option>
+            <!-- Add more language options as needed -->
+        </select>
+        
+        <button type="submit">Upload Video and Dub</button>
+    </form>
+    <!-- dub.html -->
+
+<a href="{% url 'play_dubbed_video' %}" target="_blank">Play Dubbed Video</a>
+
+</body>
+</html>
+
